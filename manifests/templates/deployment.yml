@@ -19,3 +19,5 @@ spec:
         image: ghcr.io/van-peterhof/harness-pipelines:{{.Values.image.tag}}
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+      - name: ghcr
