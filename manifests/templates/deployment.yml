@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harness-pipelines-deployment
+  labels:
+    app: harness-pipelines
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: harness-pipelines
+  template:
+    metadata:
+      labels:
+        app: harness-pipelines
+    spec:
+      containers:
+      - name: harness-pipelines
+        image: ghcr.io/van-peterhof/harness-pipelines:{{.Values.image.tag}}
+        ports:
+        - containerPort: 8080
